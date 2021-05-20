@@ -1,0 +1,25 @@
+name: 'Rust MUSL Builder'
+description: 'Build statically linked rust binary'
+author: Aaron Griffin
+inputs:
+  args:
+    description: "Cargo arguments"
+    required: true
+    default: "build --release"
+  credentials:
+    description: "Git credentials - https://git-scm.com/docs/git-credential-store"
+    required: false
+  directory:
+    description: Relative path under $GITHUB_WORKSPACE where Cargo project is located
+    required: false
+runs:
+  using: 'docker'
+  image: 'docker://sevcosec/rust-musl-action:1.0.0'
+  args:
+    - ${{ inputs.args }}
+    - ${{ inputs.directory }}
+    - ${{ inputs.credentials }}
+  post-entrypoint: 'cleanup.sh'
+branding:
+  icon: box
+  color: orange
