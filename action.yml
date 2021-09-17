@@ -14,7 +14,7 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://sevcosec/rust-musl-action:1.0.0"
+  image: "docker://sevcosec/rust-musl-actionr:1.0.1"
   args:
     - ${{ inputs.args }}
     - ${{ inputs.directory }}

@@ -10,7 +10,7 @@ Rust MUSL Builder Action
 GitHub action for building statically linked rust binaries (x86_64-unknown-linux-musl) Based on [emk/rust-musl-builder](https://github.com/emk/rust-musl-builder).
 
 ```yaml
-- uses: sevco/rust-musl-action@v1.0.0
+- uses: sevco/rust-musl-action@v1.0.1
   with:
     args: build --release --all-features
     git_credentials: ${{ secrets.GIT_CREDENTIALS }}
