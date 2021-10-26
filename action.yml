@@ -14,11 +14,11 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://sevcosec/rust-musl-action:1.0.4"
+  image: "docker://ghcr.io/sevco/rust-musl-action:1.0.4"
   args:
     - ${{ inputs.args }}
     - ${{ inputs.directory }}
-    - ${{ inputs.git_credentials }}
+    - ${{ inputs.credentials }}
   post-entrypoint: "cleanup.sh"
 branding:
   icon: box
