@@ -17,7 +17,7 @@ jobs:
         with:
           # Fetches entire history, so we can analyze commits since last tag
           fetch-depth: 0
-      - uses: actions-rs/toolchain@v1.0.7
+      - uses: actions-rs/toolchain@v1
         if: github.event_name == 'schedule'
         with:
           toolchain: stable
@@ -51,7 +51,7 @@ jobs:
         run: TOOLCHAIN=${{ env.TOOLCHAIN }} make musl-builder
       - name: Build and push Docker image
         if: env.EXECUTE == 'true'
-        uses: docker/build-push-action@1814d3dfb36d6f84174e61f4a4b05bd84089a4b9
+        uses: docker/build-push-action@v2
         with:
           context: .
           push: true
@@ -62,14 +62,14 @@ jobs:
             ghcr.io/sevco/rust-musl-action:${{ env.TOOLCHAIN }}
       - name: Update version in actions.yml
         if: env.EXECUTE == 'true'
-        uses: jacobtomlinson/gha-find-replace@2.0.0
+        uses: jacobtomlinson/gha-find-replace@2
         with:
           find: 'docker://ghcr.io/sevco/rust-musl-action:[^"]+'
           replace: "docker://ghcr.io/sevco/rust-musl-action:${{ env.TOOLCHAIN }}"
           include: "action.yml"
       - name: Update version in README
         if: env.EXECUTE == 'true'
-        uses: jacobtomlinson/gha-find-replace@2.0.0
+        uses: jacobtomlinson/gha-find-replace@2
         with:
           find: "sevco/rust-musl-action@.+"
           replace: "sevco/rust-musl-action@${{ env.TOOLCHAIN }}"
