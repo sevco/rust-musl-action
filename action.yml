@@ -18,7 +18,7 @@ runs:
   args:
     - ${{ inputs.args }}
     - ${{ inputs.directory }}
-    - ${{ inputs.credentials }}
+    - ${{ inputs.git_credentials }}
   post-entrypoint: "cleanup.sh"
 branding:
   icon: box
