@@ -51,7 +51,7 @@ jobs:
         run: TOOLCHAIN=${{ env.TOOLCHAIN }} make musl-builder
       - name: Build and push Docker image
         if: env.EXECUTE == 'true'
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
